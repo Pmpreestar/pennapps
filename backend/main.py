@@ -1,53 +1,43 @@
-from flask import Flask
-from flask import request
-from math import sin, cos, sqrt, atan2, radians
-import pandas as pd
-import numpy
+from flask import Flask, request
+import pandas as pd, numpy, time
 
 app = Flask(__name__)
 requests = pd.DataFrame()
-types = pd.DataFrame()
 
 @app.route("/request")
 def help_request():
     global requests, types
     args = request.args
+    currtime = time.time()
     requests = requests.append(
-        {"FirstName": args["firstname"],
-         "LastName": args["lastname"],
+        {"Name": args["name"],
          "Phone": args["phone"],
          "Lat": float(args["lat"]),
-         "Long": float(args["long"])},
-        ignore_index=True)
-    for type in args["types"].split(","):
-        types = types.append(
-            {"RequestID" : int(requests.index.values[-1]),
-             "Type" : type}, ignore_index=True)
-    return requests.to_json() + "<br>" + types.to_json(), 200
+         "Long": float(args["long"]),
+         "Text": args["text"],
+         "RequestTime": currtime,
+         "ExpireTime": currtime + int(args["duration"])
+         }, ignore_index=True)
+    return requests.to_json()
 
 @app.route("/list")
 def list_requests():
     global requests, types
-    R = 6373.0
-    user_lat = radians(float(request.args["lat"]))
-    user_long = radians(float(request.args["long"]))
+    user_lat = numpy.deg2rad(float(request.args["lat"]))
+    user_long = numpy.deg2rad(float(request.args["long"]))
     maxdist = float(request.args["maxdist"])
-    if "typefilter" in request.args:
-        typefilter = request.args["typefilter"].split(",")
+    if "filter" in request.args: filter = request.args["filter"]
+    else: filter = ""
     requests = requests.assign(
-        Distance = R * 2 * atan2(sqrt(sin((radians(requests.Lat) - user_lat) / 2)**2 + cos(user_lat)
-                                      * cos(radians(requests.Lat)) * sin((radians(requests.Long) - user_long) / 2)**2),
-                                 sqrt(1 - (sin((radians(requests.Lat) - user_lat) / 2)**2 + cos(user_lat)
-                                      * cos(radians(requests.Lat)) * sin((radians(requests.Long) - user_long) / 2)**2))))
-    if "typefilter" in locals(): filtered = types[types.Type.isin(typefilter)]
-    else: filtered = types
-    requestfilter = set(map(lambda n: numpy.int64(n), list(filtered["RequestID"])))
-    ret = pd.DataFrame()
-    for type in filtered:
-        get RequestID row from requests
-        put that in ret
-        store type as array in new Types column for ret
-    return "ret"
+        Distance = 6373.0 * 2 * numpy.arctan2(numpy.sqrt(numpy.sin((numpy.deg2rad(requests.Lat) - user_lat) / 2)**2 + numpy.cos(user_lat)
+                                      * numpy.cos(numpy.deg2rad(requests.Lat)) * numpy.sin((numpy.deg2rad(requests.Long) - user_long) / 2)**2),
+                                 numpy.sqrt(1 - (numpy.sin((numpy.deg2rad(requests.Lat) - user_lat) / 2)**2 + numpy.cos(user_lat)
+                                      * numpy.cos(numpy.deg2rad(requests.Lat)) * numpy.sin((numpy.deg2rad(requests.Long) - user_long) / 2)**2))))
+    filtered = requests[requests.Distance < maxdist].sort_values("Distance")
+    currtime = time.time()
+    filtered = filtered[filtered.ExpireTime > currtime]
+    filtered = filtered[filtered.Text.str.contains(filter)]
+    return filtered.to_json()
 
 
 if __name__ == "__main__":
