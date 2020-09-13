@@ -23,28 +23,55 @@
 
 <br>
 
+
+
 <div class="container">
     <h3>What do you need assistance with? </h3>
     <form action="/action_page.php"> 
   
       <div class="form-group">
-        <label for="Where?">Where:</label>
+        <label for="Where?">Where are you located?</label>
         <input type="where" class="form-control" id="where" placeholder="Location?" name="where">
       </div>
       
-      
       <div class="form-group">
-        <label for="When?">When:</label>
-        <input type="when" class="form-control" id="when" placeholder="When?" name="when">
-      </div>
-  
+        <label for="sel1">How soon do you need help?</label>
+        <select class="form-control" id="sel1">
+          <option>1-3 hours</option>
+          <option>1-3 days</option>
+          <option>1 week</option>
+        </select>
+
+    <br>
       <div class="form-group">
-        <label for="description">Describe what you need: </label>
+        <label for="description">Describe what you need:</label>
         <input type="desc" class="form-control" id="desc" placeholder="Let us know what type of help you need!" name="desc">
       </div>
       
-      <button type="button" class="btn btn-primary">Submit</button>
-    </form>
-
+    
+        <h3>Please provide your contact info: </h3>
+        <form action="/action_page.php"> 
+      
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+          </div>
+          
+          
+          <div class="form-group">
+            <label for="name">Phone Number:</label>
+            <input type="name" class="form-control" id="name" placeholder="Enter phone number" name="name">
+          </div>
+      
+        
+      
+        </form>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+      <button id = "find-me">Show my location</button><br/>
+      <p id = "status"></p>
+      <a id = "map-link" target="_blank"></a>
+    
+      <script src = "map.js"></script>
 </body>
 </html>
