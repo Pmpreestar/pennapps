@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-
-
 <html>
 <head>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link href="testmain.css" rel= "stylesheet">
+ 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <ul class="nav justify-content-center">
@@ -17,36 +15,21 @@
   <li class="nav-item">
     <a class="nav-link" a href="needhelp.html">Need Help</a>
   </li>
-
 </ul>
+
 <div style="background-color:#e5e5e5;padding:15px;text-align:center;">
   <h1>Give Help</h1>
 </div>
-
 
 <div class="main">
     <br>
     <h3>Welcome to Give Help</h3>
     <p></p>
   </div>
-
-<div class="wrapper">
- 
-<div id="map">
-    <span class="helper">Click the button below to show your location on the map</span>
-    <img id="preloader" src="preloader.gif">
-</div>
-<a class="button" href="" title="">Find My Location</a>
- 
-<div id="results">
-    <span class="longitude"></span><br>
-    <span class="lattitude"></span><br>
-    <span class="location"></span>
-</div>
-</div>
-
-
-
+  <script scr = "map.js"></script>
+<button id = "find-me">Show my location</button><br/>
+  <p id = "status"></p>
+  <a id = "map-link" target="_blank"></a>
 
 </body>
 </html>
