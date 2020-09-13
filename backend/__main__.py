@@ -55,12 +55,21 @@ def list_requests():
     try:
         requests = requests.assign(
             Distance = 6373.0 * 2 * numpy.arctan2(
-                numpy.sqrt(numpy.sin((numpy.deg2rad(requests.Lat) - user_lat) / 2)**2
-                           + numpy.cos(user_lat) * numpy.cos(numpy.deg2rad(requests.Lat))
-                           * numpy.sin((numpy.deg2rad(requests.Long) - user_long) / 2)**2),
-                numpy.sqrt(1 - (numpy.sin((numpy.deg2rad(requests.Lat) - user_lat) / 2)**2
-                                + numpy.cos(user_lat) * numpy.cos(numpy.deg2rad(requests.Lat))
-                                * numpy.sin((numpy.deg2rad(requests.Long) - user_long) / 2)**2))))
+                numpy.sqrt(
+                    numpy.sin((numpy.deg2rad(requests.Lat) - user_lat) / 2)
+                    ** 2
+                    + numpy.cos(user_lat)
+                    * numpy.cos(numpy.deg2rad(requests.Lat))
+                    * numpy.sin((numpy.deg2rad(requests.Long) - user_long) / 2)
+                    ** 2
+                ), numpy.sqrt(1 - (
+                    numpy.sin((numpy.deg2rad(requests.Lat) - user_lat) / 2)
+                    ** 2
+                    + numpy.cos(user_lat)
+                    * numpy.cos(numpy.deg2rad(requests.Lat))
+                    * numpy.sin((numpy.deg2rad(requests.Long) - user_long) / 2)
+                    ** 2)
+                )))
         # Filters out all requests out of maximum range and sorts by nearest
         filtered = requests[requests.Distance < maxdist].sort_values("Distance")
         # Filters out all expired requests
