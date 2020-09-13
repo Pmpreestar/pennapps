@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="newcss.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<ul class="nav justify-content-center">
+  <li class="nav-item">
+    <a class="nav-link" a href="home.html">Give Help</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" a href="needhelp.html">Need Help</a>
+  </li>
+</ul>
+<div style="background-color:#FFD467;padding:15px;text-align:center;">
+  
+ 
+  <h1>Need Help</h1>
+</div>
+<body style ="background-color: #fcf3db ;"
+<br>
+
+<div class="container">
+  <h3>What do you need assistance with? </h3>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
+    </div>
+        
+    <div class="form-group">
+      <label for="name">Phone Number:</label>
+      <input type="phone" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
+    </div>
+      
+      <div class="form-group"> 
+        <label for="sel1">How soon do you need help?</label>
+        <select class="form-control" id="sel1">
+          <option value="hr">1-3 hours</option>
+          <option value="day">1-3 days</option>
+          <option value="wk">1 week</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Describe what you need:</label>
+        <input type="desc" class="form-control" id="desc" placeholder="Let us know what type of help you need!" name="desc">
+      </div>
+
+      <div class="form-group">
+        <label for="Where?">Where are you located?</label>
+        <input type="where" class="form-control" id="where" placeholder="Location?" name="where">
+      </div>
+      <button id = "find-me">Show my location</button><br/>
+        <p id = "status"></p>
+        <a id = "map-link" target="_blank"></a>
+      <br/>
+
+    <button id="submit" type="button" class="btn btn-primary">Submit</button>
+
+  <script src = "map.js"></script>
+  <script src="form.js"></script>
+</body>
+</html>
