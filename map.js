@@ -1,4 +1,5 @@
-function geoFindMe() {
+(function() {
+  function geoFindMe() {
 
     const status = document.querySelector('#status');
     const mapLink = document.querySelector('#map-link');
@@ -29,3 +30,4 @@ function geoFindMe() {
   }
   
   document.querySelector('#find-me').addEventListener('click', geoFindMe);
+})();
