@@ -8,8 +8,8 @@
     mapLink.textContent = '';
   
     function success(position) {
-      const latitude  = position.coords.latitude;
-      const longitude = position.coords.longitude;
+      const latitude  = Math.floor(position.coords.latitude * 1000) / 1000;
+      const longitude = Math.floor(position.coords.longitude * 1000) / 1000;
   
       status.textContent = '';
       mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
