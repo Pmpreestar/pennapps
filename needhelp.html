@@ -7,9 +7,6 @@
 <body>
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" a href="testindex.html">Join</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" a href="home.html">Give Help</a>
   </li>
   <li class="nav-item">
@@ -24,7 +21,6 @@
 
 <div class="container">
   <h3>What do you need assistance with? </h3>
-  <form>
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="name" class="form-control" id="name" placeholder="Enter name" name="name">
@@ -34,14 +30,6 @@
       <label for="name">Phone Number:</label>
       <input type="phone" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
     </div>
-
-      <div class="form-group">
-        <label for="Where?">Where are you located?</label>
-        <input type="where" class="form-control" id="where" placeholder="Location?" name="where">
-        <button id = "find-me">Show my location</button><br/>
-        <p id = "status"></p>
-        <a id = "map-link" target="_blank"></a>
-      </div>
       
       <div class="form-group">
         <label for="sel1">How soon do you need help?</label>
@@ -52,14 +40,21 @@
         </select>
       </div>
 
-    <br>
       <div class="form-group">
         <label for="description">Describe what you need:</label>
         <input type="desc" class="form-control" id="desc" placeholder="Let us know what type of help you need!" name="desc">
       </div>
 
+      <div class="form-group">
+        <label for="Where?">Where are you located?</label>
+        <input type="where" class="form-control" id="where" placeholder="Location?" name="where">
+      </div>
+      <button id = "find-me">Show my location</button><br/>
+        <p id = "status"></p>
+        <a id = "map-link" target="_blank"></a>
+      <br/>
+
     <button id="submit" type="button" class="btn btn-primary">Submit</button>
-  </form>
 
   <script src = "map.js"></script>
   <script src="form.js"></script>
