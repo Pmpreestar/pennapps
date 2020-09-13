@@ -2,7 +2,7 @@
   function submitForm() {
     var name = document.getElementById('name').value
     var phone = document.getElementById('phone').value
-    var location = document.getElementById('status').value
+    var location = document.getElementById('map-link').innerHTML
     var lat, long
     if (!location) {
       lat = -1
