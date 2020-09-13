@@ -8,24 +8,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
-<ul class="nav justify-content-center">
-  <li class="nav-item">
-    <a class="nav-link active" a href="testindex.html">Join</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" a href="home.html">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" a href="needhelp.html">Need Help</a>
-  </li>
-
-</ul>
-
-
 <div style="background-color:#e5e5e5;padding:15px;text-align:center;">
   <h1>Disaster Buddies</h1>
 </div>
-
 
 <div class="container">
     <br>
@@ -67,12 +52,22 @@
     <div class="checkbox">
       <label><input type="checkbox" name="remember"> Location Services</label>
     </div>
-    
-    <button type="button" class="btn btn-primary">Join</button>
   </form>
+  
 </div>
-
-
+<div class="container">
+  <div class="row">
+  
+      <div class="col-xs-6">
+         
+          <button onclick="location.href = 'needhelp.html'" class = "btn-danger btn-block" = "button">Need Help</button>
+      </div>
+  
+      <div class="col-xs-6">
+          <button onclick="location.href = 'home.html'" class = "btn-success btn-block" = "button">Give Help</button>
+      </div>
+  
+  </div>
 
 
 </body>

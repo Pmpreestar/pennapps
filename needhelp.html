@@ -10,7 +10,7 @@
     <a class="nav-link active" a href="testindex.html">Join</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" a href="home.html">Home</a>
+    <a class="nav-link" a href="home.html">Give Help</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" a href="needhelp.html">Need Help</a>
@@ -22,17 +22,33 @@
 </div>
 
 
-<div class="main">
-    <br>
-    <h3>Welcome to Need Help</h3>
-    <p></p>
-  </div>
-<div class = "row">
-  <div class ="col-md-12">
-    <p>sample </p> 
-    <button type="button" class="btn btn-primary">Get Started</button>
-  </div>
-</div>
+
+<br>
+
+<div class="container">
+    <h3>What do you need assistance with? </h3>
+    <form action="/action_page.php"> 
+  
+      <div class="form-group">
+        <label for="Where?">Where:</label>
+        <input type="where" class="form-control" id="where" placeholder="Location?" name="where">
+      </div>
+      
+      
+      <div class="form-group">
+        <label for="When?">When:</label>
+        <input type="when" class="form-control" id="when" placeholder="When?" name="when">
+      </div>
+  
+      <div class="form-group">
+        <label for="description">Describe what you need: </label>
+        <input type="desc" class="form-control" id="desc" placeholder="Let us know what type of help you need!" name="desc">
+      </div>
+     
+        
+      
+      <button type="button" class="btn btn-primary">Submit</button>
+    </form>
 
 
 
