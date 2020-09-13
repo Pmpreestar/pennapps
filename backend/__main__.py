@@ -1,7 +1,10 @@
 from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import pandas as pd, numpy, time
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 requests = pd.DataFrame({"Name": [""], "Phone": [""], "Lat": [-1.0],
                          "Long": [-1.0], "Text": [""], "RequestTime": [0.0],
                          "ExpireTime": [0.0]})
@@ -10,6 +13,7 @@ requests = pd.DataFrame({"Name": [""], "Phone": [""], "Lat": [-1.0],
 # for help with their contact information, time frame of needed help, location,
 # and a description
 @app.route("/request")
+@cross_origin()
 def help_request():
     global requests
     try:
@@ -36,6 +40,7 @@ def help_request():
 # This is for the users looking to provide help: they can search nearby listings
 # and filter by type of help needed
 @app.route("/list")
+@cross_origin()
 def list_requests():
     global requests
     try:
@@ -83,7 +88,7 @@ def list_requests():
         filtered_json = filtered.to_json()
     except:
         return "Server error: Could not fetch data", 500
-    return filtered_json
+    return filtered_json, 200, {'Content-Type': 'application/json; charset=utf-8'}
 
 
 if __name__ == "__main__":
