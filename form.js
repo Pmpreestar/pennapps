@@ -1,10 +1,13 @@
 (function() {
-  async function submitForm(event) {
-    event.preventDefault()
-    location = document.getElementById('where')
-    duration = document.getElementById('when')
-    description = document.getElementById('desc')
-    name = "bob"
+  function submitForm() {
+//    location = document.getElementById('where')
+//    duration = document.getElementById('when')
+//    description = document.getElementById('desc')
+    sendData().then()
+  }
+
+  async function sendData() {
+  name = "bob"
     phone = "123"
     lat = 14
     long = 20
@@ -14,11 +17,12 @@
     var url = "http://localhost:5000/request?".concat(
       "name=", name, "&phone=", phone, "&lat=", lat, "&long=", long,
       "&text=", text, "&duration=", dur)
-    fetch(url).then()
-  }
+    var response = await fetch(url)
+    if (!response.ok) {
+        console.log("wrong")
+    }
+    }
 
-  document.getElementById('form').addEventListener('submit', submitForm)
-
-
+  document.getElementById('submit').addEventListener('click', submitForm)
 
 })()
