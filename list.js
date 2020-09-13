@@ -4,7 +4,7 @@
 
   function getList() {
     function success(position) {
-        fetchList(position.coords.latitude, position.coords.longitude)
+        fetchList(Math.floor(position.coords.latitude * 1000) / 1000, Math.floor(position.coords.longitude * 1000) / 1000)
     }
     
     function error() {
