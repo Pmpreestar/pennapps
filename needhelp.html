@@ -23,8 +23,6 @@
 
 <br>
 
-
-
 <div class="container">
     <h3>What do you need assistance with? </h3>
     <form action="/action_page.php"> 
@@ -66,15 +64,24 @@
         
       
         </form>
-        <button type="button" class="btn btn-primary">Submit</button>
+      
       </div>
+  
+    <div class="form-group">
+      <label for="Where?">Where are you located?</label>
+      <input type="where" class="form-control" id="where" placeholder="Location?" name="where">
       <button id = "find-me">Show my location</button><br/>
       <p id = "status"></p>
       <a id = "map-link" target="_blank"></a>
-    
-      <script src = "map.js"></script>
-      <button id="submit" type="button" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 
+
+   
+
+    <input type="submit" class="btn btn-primary" value="Submit">
+  </form>
+
+  <script src = "map.js"></script>
+  <script src="form.js"></script>
 </body>
 </html>
