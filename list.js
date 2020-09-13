@@ -26,10 +26,24 @@
         var requestList = document.getElementById('request-list')
         var requests = Object.keys(list.Name)
         var lis = ""
+        var currtime = Math.floor(Date.now() / 1000)
         for (var i = 0; i < requests.length; i++) {
             var key = requests[i]
             lis += '<li class="list-group-item">'
             lis += list.Name[key]
+            lis += '<p>Phone Number: ' + list.Phone[key] + '</p>'
+            var time = list.ExpireTime[key] - currtime
+            var days = Math.floor(time / (24 * 3600))
+            time %= (24 * 3600)
+            var hours = Math.floor(time / 3600)
+            time %= 3600
+            var mins = Math.floor(time / 60)
+            time = Math.floor(time % 60)
+            lis += '<p>I need help in the next ' + days + ':' + 
+                    hours.toString().padStart(2, '0') + ':' + 
+                    mins.toString().padStart(2, '0') + ':' + 
+                    time.toString().padStart(2, '0') + '</p>'
+            lis += '<p>Description: ' + list.Text[key] + '</p>'
             lis += '</li>'
         }
         requestList.innerHTML = lis
